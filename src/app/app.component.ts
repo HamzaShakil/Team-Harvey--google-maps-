@@ -183,132 +183,132 @@ marker: TravelMarker = null;
 
     }, 6000)
    
-    // setTimeout(function () {
-    //   self.drawpoints(
-    //     {
-    //       "Points": [
-    //         {
-    //           "type": "person",
-    //           "id": 'A',
-    //           "lat": 51.513290000000005,
-    //           "lon": -0.09861,
-    //           "data": {
-    //           }
-    //         },
-    //         {
-    //           "type": "person",
-    //           "id": 'B',
-    //          "lat": 51.513290000000005,
-    //           "lon": -0.09861,
-    //           "data": {
-    //           }
-    //         }
-    //       ]
+    setTimeout(function () {
+      self.drawpoints(
+        {
+          "Points": [
+            {
+              "type": "person",
+              "id": 'A',
+              "lat": 24.882496,
+              "lon":67.045239,
+              "data": {
+              }
+            },
+            {
+              "type": "person",
+              "id": 'B',
+             "lat": 24.881629,
+              "lon": 67.045207,
+              "data": {
+              }
+            }
+          ]
 
-    //     });
+        });
 
-    // }, 7000)
-    // setTimeout(function () {
-    //   self.drawpoints(
-    //     {
-    //       "Points": [
-    //         {
-    //           "type": "person",
-    //           "id": 'A',
-    //           "lat": 51.513290000000005,
-    //           "lon": -0.0985,
-    //           "data": {
-    //           }
-    //         },
-    //         {
-    //           "type": "person",
-    //           "id": 'B',
-    //            "lat": 51.513290000000005,
-    //           "lon": -0.0985,
-    //           "data": {
-    //           }
-    //         }
-    //       ]
+    }, 7000)
+    setTimeout(function () {
+      self.drawpoints(
+        {
+          "Points": [
+            {
+              "type": "person",
+              "id": 'A',
+              "lat": 24.882817, 
+              "lon": 67.046076,
+              "data": {
+              }
+            },
+            {
+              "type": "person",
+              "id": 'B',
+               "lat": 24.881853,
+              "lon": 67.045861,
+              "data": {
+              }
+            }
+          ]
 
-    //     });
+        });
 
-    // }, 8000)
-    // setTimeout(function () {
-    //   self.drawpoints(
-    //     {
-    //       "Points": [
-    //         {
-    //           "type": "person",
-    //           "id": 'A',
-    //           "lat": 51.513290000000005,
-    //           "lon": -0.09838000000000001,
-    //           "data": {
-    //           }
-    //         },
-    //         {
-    //           "type": "person",
-    //           "id": 'B',
-    //           "lat": 51.513290000000005,
-    //           "lon": -0.09838000000000001,
-    //           "data": {
-    //           }
-    //         }
-    //       ]
+    }, 8000)
+    setTimeout(function () {
+      self.drawpoints(
+        {
+          "Points": [
+            {
+              "type": "person",
+              "id": 'A',
+              "lat": 24.883157,
+              "lon": 67.046548,
+              "data": {
+              }
+            },
+            {
+              "type": "person",
+              "id": 'B',
+              "lat": 24.882204,
+              "lon": 67.046580,
+              "data": {
+              }
+            }
+          ]
 
-    //     });
+        });
 
-    // }, 90000)
-    // setTimeout(function () {
-    //   self.drawpoints(
-    //     {
-    //       "Points": [
-    //         {
-    //           "type": "person",
-    //           "id": 'A',
-    //           "lat": 51.51328,
-    //           "lon": -0.09826000000000001,
-    //           "data": {
-    //           }
-    //         },
-    //         {
-    //           "type": "person",
-    //           "id": 'B',
-    //           "lat": 51.51451,
-    //           "lon": -0.08129,
-    //           "data": {
-    //           }
-    //         }
-    //       ]
+    }, 90000)
+    setTimeout(function () {
+      self.drawpoints(
+        {
+          "Points": [
+            {
+              "type": "person",
+              "id": 'A',
+              "lat":24.883508,
+              "lon": 67.047160,
+              "data": {
+              }
+            },
+            {
+              "type": "person",
+              "id": 'B',
+              "lat": 24.882719,
+              "lon": 67.047589,
+              "data": {
+              }
+            }
+          ]
 
-    //     });
+        });
 
-    // }, 10000)
-    // setTimeout(function () {
-    //   self.drawpoints(
-    //     {
-    //       "Points": [
-    //         {
-    //           "type": "person",
-    //           "id": 'A',
-    //           "lat": 51.51328,
-    //           "lon": -0.09826000000000001,
-    //           "data": {
-    //           }
-    //         },
-    //         {
-    //           "type": "person",
-    //           "id": 'B',
-    //           "lat": 51.514520000000005,
-    //           "lon": -0.08132,
-    //           "data": {
-    //           }
-    //         }
+    }, 10000)
+    setTimeout(function () {
+      self.drawpoints(
+        {
+          "Points": [
+            {
+              "type": "person",
+              "id": 'A',
+              "lat": 24.883878 ,
+              "lon": 67.047750,
+              "data": {
+              }
+            },
+            {
+              "type": "person",
+              "id": 'B',
+              "lat": 24.883011,
+              "lon": 67.048254,
+              "data": {
+              }
+            }
 
-    //       ]
+          ]
 
-    //     });
+        });
 
-    // }, 11000)
+    }, 11000)
 
 
 
@@ -326,26 +326,39 @@ var Colors = [
 ];
 
     data.Points.forEach(function (res) {
-
+    
       if (markerStore.hasOwnProperty(res.id)) {
+        self.lat=res.lat; 
+        self.lng=res.lon;
 
         // new google.maps.Marker({position: start, map: this.map, label: 'A'});
         markerStore[res.id].setPosition(new google.maps.LatLng(res.lat, res.lon));
+        //pushing previous cordinate of marker
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
-        console.log(markerStore[res.id].previousLatLngs)
-        var cityCircle = new google.maps.Circle({
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: '#FF0000',
-          fillOpacity: 0.35,
-          map: self.map,
-          center: new google.maps.LatLng(res.lat, res.lon),
-          radius: 2
-        });
+        
+      
+        // create circle on last position
+        // var cityCircle = new google.maps.Circle({
+        //   strokeColor: '#FF0000',
+        //   strokeOpacity: 0.8,
+        //   strokeWeight: 2,
+        //   fillColor: '#FF0000',
+        //   fillOpacity: 0.35,
+        //   map: self.map,
+        //   center: new google.maps.LatLng(res.lat, res.lon),
+        //   radius: 2
+        // });
+        var lineSymbol = {  
+    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW  
+  };  
+        //create polyline
         var flightPath = new google.maps.Polyline({
           path: markerStore[res.id].previousLatLngs,
           geodesic: true,
+          icons: [{
+            icon: lineSymbol,
+            offset: '100%'
+          }],
            strokeColor: Colors[i],
           strokeOpacity: 1.0,
           strokeWeight: 2
@@ -353,15 +366,8 @@ var Colors = [
         flightPath.setMap(self.map);
         i++;
 
-        // var marker = new google.maps.Marker({
-        //           animation: google.maps.Animation.DROP,
-        //           position: new google.maps.LatLng(res.lat,res.lon),
-
-        //           title:res.lat.toString(),
-        //           map:self.map,
-        //           markerType:'overlay'
-        //       }); 
-      } else {
+      } 
+      else {
 
         var marker = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
@@ -375,38 +381,10 @@ var Colors = [
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
         
-        // this.marker = new TravelMarker(options);
-      }
-     //this.marker = new TravelMarker(this.options);
-
-    });
      
-    
-    // add locations from direction service 
-    
-      
-    
-  }
-  setMarkers(data) {
-    console.log(this.markers)
-    let self = this;
-    let i = 0;
-    data.Points.forEach(function (res) {
-
-
+      }
+     
     });
+    
   }
-
-
 }
-
-
-
-interface marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable: boolean;
-}
-
-

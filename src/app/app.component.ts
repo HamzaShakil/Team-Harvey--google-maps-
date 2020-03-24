@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { OnChanges, AfterViewInit } from '@angular/core';
 import { GeocodesService } from './geocodes.service';
-import { TravelMarker, TravelMarkerOptions, TravelData, TravelEvents, EventType } from 'travel-marker';
+import * as SlidingMarker from 'marker-animate-unobtrusive';
+
 var markerStore = {};
 declare var google: any;
 
+var marker;
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -13,7 +15,7 @@ declare var google: any;
 
 export class AppComponent implements OnChanges, AfterViewInit {
 
-  marker: TravelMarker = null;
+  
   geoPoints: any[];
   zoom: number = 17;
   markers: any[];
@@ -354,16 +356,24 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
       }
       else {
+    let latlong1 = new google.maps.LatLng(res.lat, res.lon);
+      marker = new SlidingMarker({
+      map: self.map,
+      position: latlong1,
 
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
+    });
 
-          position: new google.maps.LatLng(res.lat, res.lon),
-          title: res.lat.toString(),
-          map: self.map,
-          cameraOnMarker: true,
+    marker.setDuration(1000);
+   marker.setEasing('linear');
+        // var marker = new SlidingMarker({
+        //   animation: google.maps.Animation.DROP,
 
-        });
+        //   position: new google.maps.LatLng(res.lat, res.lon),
+        //   title: res.lat.toString(),
+        //   map: self.map,
+        //   cameraOnMarker: true,
+
+        // });
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));

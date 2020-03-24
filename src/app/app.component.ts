@@ -4,6 +4,7 @@ import { GeocodesService } from './geocodes.service';
 import { TravelMarker, TravelMarkerOptions, TravelData, TravelEvents, EventType } from 'travel-marker';
 var markerStore = {};
 declare var google: any;
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ declare var google: any;
 
 export class AppComponent implements OnChanges, AfterViewInit {
 
-
+marker: TravelMarker = null;
   geoPoints: any[];
   zoom: number = 17;
   markers: any[];
@@ -323,15 +324,7 @@ var Colors = [
     "#00FF00"
     
 ];
-var options = {
-    map: self.map,  // map object
-    speed: 50,  // default 10 , animation speed
-    interval: 30, // default 10, marker refresh time
-    speedMultiplier: 1, // default 1, for fast-forward/rewind
-    cameraOnMarker: true,  // default false, move camera with marker
-    markerType: 'default',  // default: 'default'
-    markerOptions: { title: "Travel Marker" }
-  };
+
     data.Points.forEach(function (res) {
 
       if (markerStore.hasOwnProperty(res.id)) {
@@ -381,12 +374,18 @@ var options = {
         });
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
-        this.marker = new TravelMarker(this.options);
+        
         // this.marker = new TravelMarker(options);
       }
-
+     //this.marker = new TravelMarker(this.options);
 
     });
+     
+    
+    // add locations from direction service 
+    
+      
+    
   }
   setMarkers(data) {
     console.log(this.markers)
@@ -401,12 +400,7 @@ var options = {
 
 }
 
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
-function success(err) {
-  console.log("success");
-}
+
 
 interface marker {
   lat: number;

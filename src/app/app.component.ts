@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { OnChanges, AfterViewInit } from '@angular/core';
 import { GeocodesService } from './geocodes.service';
-//import * as SlidingMarker from 'marker-animate-unobtrusive';
+import { delay } from 'rxjs/operator/delay';
+//import {SlidingMarker} from 'marker-animate-unobtrusive';
 
 var markerStore = {};
 declare var google: any;
@@ -325,7 +326,9 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
         // self.lat = res.lat;
         // self.lng = res.lon;
+       
         var myLatlng = new google.maps.LatLng(res.lat, res.lon);
+         self.map.panTo(myLatlng);
         //pushing previous cordinate of marker
         markerStore[res.id].previousLatLngs.push(myLatlng);
 
@@ -359,16 +362,28 @@ export class AppComponent implements OnChanges, AfterViewInit {
       }
       else {
         var latlng = new google.maps.LatLng(res.lat, res.lon);
-        var marker = new google.map.Marker({
+        var marker = new SlidingMarker({
           animation: google.maps.Animation.DROP,
           position: new google.maps.LatLng(res.lat, res.lon),
           map: self.map,
           // title: "I'm sliding marker",
-          duration: 1000,
-          easing: "linear"
+          duration: 2000,
+          easing: "easeOutExpo"
 
         });
+        // var marker = new google.maps.Marker({
+        //   // animation: google.maps.Animation.DROP,
 
+        //   position: latlng,//new google.maps.LatLng(res.lat, res.lon),
+        //   title: res.lat.toString(),
+        //   map: self.map,
+        //   cameraOnMarker: true,
+        //   duration: 2000,
+        //   easing: "easeOutExpo"
+
+        // });
+       
+        marker.setPosition(latlng);
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));

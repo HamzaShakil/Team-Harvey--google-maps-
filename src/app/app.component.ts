@@ -17,8 +17,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
   zoom: number = 15;
   markers: any[];
   map: any;
-  public latitude: number;
-  public longitude: number;
+  
   // initial center position for the map
   lat: number = 51.512802;
   lng: number = -0.091324;
@@ -58,11 +57,20 @@ onMapReady(map: any) {
               {
                 "type": "person",
                 "id": 'A',
-               "lat": 51.513580000000005,
-                "lon": -0.09634000000000001,
+               "lat": 51.51324,
+                "lon": -0.09909000000000001,
+                "data": {
+                }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51478,
+                "lon": -0.08078,
                 "data": {
                 }
               }
+              
             ]
           
           });
@@ -75,11 +83,22 @@ onMapReady(map: any) {
               {
                 "type": "person",
                 "id": 'A',
-               "lat": 51.513720000000006,
-                "lon": -0.09638000000000001,
+               "lat": 51.5133,
+                "lon": -0.09908,
+                "data": {
+                }
+                
+              },
+              
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51475000000001,
+                "lon": -0.08080000000000001,
                 "data": {
                 }
               }
+              
             ]
           
           });
@@ -94,6 +113,15 @@ onMapReady(map: any) {
                 "id": 'A',
                  "lat": 51.5133,
                 "lon": -0.09908,
+                "data": {
+                }
+              },
+              
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51464000000001,
+                "lon": -0.08085,
                 "data": {
                 }
               }
@@ -113,6 +141,15 @@ onMapReady(map: any) {
                 "lon": -0.09895000000000001,
                 "data": {
                 }
+              },
+              
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.5146,
+                "lon": -0.08088000000000001,
+                "data": {
+                }
               }
             ]
           
@@ -128,6 +165,14 @@ onMapReady(map: any) {
                 "id": 'A',
                 "lat": 51.513290000000005,
                 "lon": -0.09885000000000001,
+                "data": {
+                }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51455000000001,
+                "lon": -0.0809,
                 "data": {
                 }
               }
@@ -147,6 +192,14 @@ onMapReady(map: any) {
                 "lon": -0.09871,
                 "data": {
                 }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.514430000000004,
+                "lon": -0.08099,
+                "data": {
+                }
               }
             ]
           
@@ -162,6 +215,14 @@ onMapReady(map: any) {
                 "id": 'A',
                 "lat": 51.513290000000005,
                 "lon": -0.09861,
+                "data": {
+                }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51324,
+                "lon": -0.09909000000000001,
                 "data": {
                 }
               }
@@ -181,6 +242,14 @@ onMapReady(map: any) {
                 "lon": -0.0985,
                 "data": {
                 }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.514430000000004,
+                "lon": -0.08099,
+                "data": {
+                }
               }
             ]
           
@@ -198,6 +267,14 @@ onMapReady(map: any) {
                 "lon": -0.09838000000000001,
                 "data": {
                 }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51449,
+                "lon": -0.08118,
+                "data": {
+                }
               }
             ]
           
@@ -212,7 +289,15 @@ onMapReady(map: any) {
                 "type": "person",
                 "id": 'A',
                  "lat": 51.51328,
-                "lon": 0.09826000000000001,
+                "lon": -0.09826000000000001,
+                "data": {
+                }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.514520000000005,
+                "lon": -0.08135,
                 "data": {
                 }
               }
@@ -232,7 +317,16 @@ onMapReady(map: any) {
                 "lon": -0.09826000000000001,
                 "data": {
                 }
+              },
+                {
+                "type": "person",
+                "id": 'B',
+               "lat": 51.51451,
+                "lon": -0.08188000000000001,
+                "data": {
+                }
               }
+              
             ]
           
           });

@@ -13,14 +13,14 @@ declare var google: any;
 
 export class AppComponent implements OnChanges, AfterViewInit {
 
-marker: TravelMarker = null;
+  marker: TravelMarker = null;
   geoPoints: any[];
   zoom: number = 17;
   markers: any[];
   map: any;
 
   // initial center position for the map
-  lat: number = 24.880368 
+  lat: number = 24.880368
   lng: number = 67.045409;
   onMapReady(map: any) {
     console.log(map);
@@ -44,9 +44,23 @@ marker: TravelMarker = null;
 
     this.geo.getPositions().subscribe(geo => {
       this.geoPoints = geo.points;
-      console.log(geo)
-      this.drawpoints(geo);
+      console.log(geo);
+      geo.Points.forEach(function (res) {
+        var marker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
+
+          position: new google.maps.LatLng(res.lat, res.lon),
+          title: res.lat.toString(),
+          map: self.map,
+          cameraOnMarker: true,
+
+        });
       
+        
+      })
+      
+      this.drawpoints(geo);
+
 
     });
 
@@ -55,21 +69,21 @@ marker: TravelMarker = null;
       self.drawpoints(
         {
           "Points": [
-         {
-                  "type": "person",
-                 
-                     "id":'A',
-                      "lat":24.880749,
-                      "lon":67.041306,
-                  
+            {
+              "type": "person",
+
+              "id": 'A',
+              "lat": 24.880749,
+              "lon": 67.041306,
+
             },
             {
-                  "type": "person",
-                 
-                   "id":'B',
-                      "lat":24.880490,
-                      "lon":67.041926,
-                 
+              "type": "person",
+
+              "id": 'B',
+              "lat": 24.880490,
+              "lon": 67.041926,
+
             },
 
           ]
@@ -94,7 +108,7 @@ marker: TravelMarker = null;
             {
               "type": "person",
               "id": 'B',
-               "lat": 24.880834,
+              "lat": 24.880834,
               "lon": 67.042621,
               "data": {
               }
@@ -121,7 +135,7 @@ marker: TravelMarker = null;
             {
               "type": "person",
               "id": 'B',
-            "lat":24.881072,
+              "lat": 24.881072,
               "lon": 67.043243,
               "data": {
               }
@@ -147,7 +161,7 @@ marker: TravelMarker = null;
             {
               "type": "person",
               "id": 'B',
-                "lat": 24.881497,
+              "lat": 24.881497,
               "lon": 67.044173,
               "data": {
               }
@@ -182,7 +196,7 @@ marker: TravelMarker = null;
         });
 
     }, 6000)
-   
+
     setTimeout(function () {
       self.drawpoints(
         {
@@ -191,14 +205,14 @@ marker: TravelMarker = null;
               "type": "person",
               "id": 'A',
               "lat": 24.882496,
-              "lon":67.045239,
+              "lon": 67.045239,
               "data": {
               }
             },
             {
               "type": "person",
               "id": 'B',
-             "lat": 24.881629,
+              "lat": 24.881629,
               "lon": 67.045207,
               "data": {
               }
@@ -215,7 +229,7 @@ marker: TravelMarker = null;
             {
               "type": "person",
               "id": 'A',
-              "lat": 24.882817, 
+              "lat": 24.882817,
               "lon": 67.046076,
               "data": {
               }
@@ -223,7 +237,7 @@ marker: TravelMarker = null;
             {
               "type": "person",
               "id": 'B',
-               "lat": 24.881853,
+              "lat": 24.881853,
               "lon": 67.045861,
               "data": {
               }
@@ -265,7 +279,7 @@ marker: TravelMarker = null;
             {
               "type": "person",
               "id": 'A',
-              "lat":24.883508,
+              "lat": 24.883508,
               "lon": 67.047160,
               "data": {
               }
@@ -283,32 +297,7 @@ marker: TravelMarker = null;
         });
 
     }, 10000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 24.883878 ,
-              "lon": 67.047750,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
-              "lat": 24.883011,
-              "lon": 67.048254,
-              "data": {
-              }
-            }
-
-          ]
-
-        });
-
-    }, 11000)
+ 
 
 
 
@@ -319,38 +308,35 @@ marker: TravelMarker = null;
 
     let self = this;
     let i = 0;
-var Colors = [
-    "#FF0000", 
-    "#00FF00"
-    
-];
+    var Colors = [
+      "#FF0000",
+      "#00FF00"
+
+    ];
 
     data.Points.forEach(function (res) {
-    
-      if (markerStore.hasOwnProperty(res.id)) {
-        self.lat=res.lat; 
-        self.lng=res.lon;
+      
 
-        // new google.maps.Marker({position: start, map: this.map, label: 'A'});
-        markerStore[res.id].setPosition(new google.maps.LatLng(res.lat, res.lon));
+ 
+
+      if (markerStore.hasOwnProperty(res.id)) {
+       
+        self.lat = res.lat;
+        self.lng = res.lon;
+
         //pushing previous cordinate of marker
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
+       // console.log(markerStore[res.id].previousLatLngs[0]+"yes")
+        // new google.maps.Marker({position: start, map: this.map, label: 'A'});
+        markerStore[res.id].setPosition(new google.maps.LatLng(res.lat, res.lon));
         
-      
-        // create circle on last position
-        // var cityCircle = new google.maps.Circle({
-        //   strokeColor: '#FF0000',
-        //   strokeOpacity: 0.8,
-        //   strokeWeight: 2,
-        //   fillColor: '#FF0000',
-        //   fillOpacity: 0.35,
-        //   map: self.map,
-        //   center: new google.maps.LatLng(res.lat, res.lon),
-        //   radius: 2
-        // });
-        var lineSymbol = {  
-    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW  
-  };  
+       
+
+
+
+        var lineSymbol = {
+          path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
+        };
         //create polyline
         var flightPath = new google.maps.Polyline({
           path: markerStore[res.id].previousLatLngs,
@@ -359,14 +345,14 @@ var Colors = [
             icon: lineSymbol,
             offset: '100%'
           }],
-           strokeColor: Colors[i],
+          strokeColor: Colors[i],
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
         flightPath.setMap(self.map);
         i++;
 
-      } 
+      }
       else {
 
         var marker = new google.maps.Marker({
@@ -380,11 +366,13 @@ var Colors = [
         });
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
-        
-     
+        markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
+        //console.log(markerStore[res.id].previousLatLngs[0])
+
+
       }
-     
+
     });
-    
+
   }
 }

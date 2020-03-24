@@ -14,13 +14,13 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
 
   geoPoints: any[];
-  zoom: number = 15;
+  zoom: number = 17;
   markers: any[];
   map: any;
 
   // initial center position for the map
-  lat: number = 24.881333;
-  lng: number = 67.042901;
+  lat: number = 24.880368 
+  lng: number = 67.045409;
   onMapReady(map: any) {
     console.log(map);
     this.map = map;
@@ -323,6 +323,15 @@ var Colors = [
     "#00FF00"
     
 ];
+var options = {
+    map: self.map,  // map object
+    speed: 50,  // default 10 , animation speed
+    interval: 30, // default 10, marker refresh time
+    speedMultiplier: 1, // default 1, for fast-forward/rewind
+    cameraOnMarker: true,  // default false, move camera with marker
+    markerType: 'default',  // default: 'default'
+    markerOptions: { title: "Travel Marker" }
+  };
     data.Points.forEach(function (res) {
 
       if (markerStore.hasOwnProperty(res.id)) {
@@ -367,10 +376,12 @@ var Colors = [
           position: new google.maps.LatLng(res.lat, res.lon),
           title: res.lat.toString(),
           map: self.map,
+          cameraOnMarker: true,
 
         });
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
+        this.marker = new TravelMarker(this.options);
         // this.marker = new TravelMarker(options);
       }
 

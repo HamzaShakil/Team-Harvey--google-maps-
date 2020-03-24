@@ -19,8 +19,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
   map: any;
 
   // initial center position for the map
-  lat: number = 51.512802;
-  lng: number = -0.091324;
+  lat: number = 24.881333;
+  lng: number = 67.042901;
   onMapReady(map: any) {
     console.log(map);
     this.map = map;
@@ -45,7 +45,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
       this.geoPoints = geo.points;
       console.log(geo)
       this.drawpoints(geo);
-      this.setMarkers(geo);
+      
 
     });
 
@@ -54,23 +54,22 @@ export class AppComponent implements OnChanges, AfterViewInit {
       self.drawpoints(
         {
           "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.51324,
-              "lon": -0.09909000000000001,
-              "data": {
-              }
+         {
+                  "type": "person",
+                 
+                     "id":'A',
+                      "lat":24.880749,
+                      "lon":67.041306,
+                  
             },
             {
-              "type": "person",
-              "id": 'B',
-              "lat": 51.51478,
-              "lon": -0.08078,
-
-              "data": {
-              }
-            }
+                  "type": "person",
+                 
+                   "id":'B',
+                      "lat":24.880490,
+                      "lon":67.041926,
+                 
+            },
 
           ]
 
@@ -84,8 +83,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'A',
-              "lat": 51.5133,
-              "lon": -0.09908,
+              "lat": 24.881024,
+              "lon": 67.042035,
               "data": {
               }
 
@@ -94,8 +93,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'B',
-              "lat": 51.51475000000001,
-              "lon": -0.08080000000000001,
+               "lat": 24.880834,
+              "lon": 67.042621,
               "data": {
               }
             }
@@ -112,8 +111,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'A',
-              "lat": 51.5133,
-              "lon": -0.09908,
+              "lat": 24.881520,
+              "lon": 67.043127,
               "data": {
               }
             },
@@ -121,8 +120,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'B',
-              "lat": 51.51464000000001,
-              "lon": -0.08085,
+            "lat":24.881072,
+              "lon": 67.043243,
               "data": {
               }
             }
@@ -138,8 +137,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'A',
-              "lat": 51.513290000000005,
-              "lon": -0.09895000000000001,
+              "lat": 24.881734,
+              "lon": 67.043758,
               "data": {
               }
             },
@@ -147,8 +146,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'B',
-              "lat": 51.5146,
-              "lon": -0.08088000000000001,
+                "lat": 24.881497,
+              "lon": 67.044173,
               "data": {
               }
             }
@@ -164,16 +163,16 @@ export class AppComponent implements OnChanges, AfterViewInit {
             {
               "type": "person",
               "id": 'A',
-              "lat": 51.513290000000005,
-              "lon": -0.09885000000000001,
+              "lat": 24.882291,
+              "lon": 67.044930,
               "data": {
               }
             },
             {
               "type": "person",
               "id": 'B',
-              "lat": 51.51455000000001,
-              "lon": -0.0809,
+              "lat": 24.881808,
+              "lon": 67.044849,
               "data": {
               }
             }
@@ -182,158 +181,133 @@ export class AppComponent implements OnChanges, AfterViewInit {
         });
 
     }, 6000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.513290000000005,
-              "lon": -0.09871,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
+   
+    // setTimeout(function () {
+    //   self.drawpoints(
+    //     {
+    //       "Points": [
+    //         {
+    //           "type": "person",
+    //           "id": 'A',
+    //           "lat": 51.513290000000005,
+    //           "lon": -0.09861,
+    //           "data": {
+    //           }
+    //         },
+    //         {
+    //           "type": "person",
+    //           "id": 'B',
+    //          "lat": 51.513290000000005,
+    //           "lon": -0.09861,
+    //           "data": {
+    //           }
+    //         }
+    //       ]
 
-              "lat": 51.514430000000004,
-              "lon": -0.08099,
-              "data": {
-              }
-            }
-          ]
+    //     });
 
-        });
+    // }, 7000)
+    // setTimeout(function () {
+    //   self.drawpoints(
+    //     {
+    //       "Points": [
+    //         {
+    //           "type": "person",
+    //           "id": 'A',
+    //           "lat": 51.513290000000005,
+    //           "lon": -0.0985,
+    //           "data": {
+    //           }
+    //         },
+    //         {
+    //           "type": "person",
+    //           "id": 'B',
+    //            "lat": 51.513290000000005,
+    //           "lon": -0.0985,
+    //           "data": {
+    //           }
+    //         }
+    //       ]
 
-    }, 7000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.513290000000005,
-              "lon": -0.09861,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
-              "lat": 51.514430000000004,
-              "lon": -0.08099,
-              "data": {
-              }
-            }
-          ]
+    //     });
 
-        });
+    // }, 8000)
+    // setTimeout(function () {
+    //   self.drawpoints(
+    //     {
+    //       "Points": [
+    //         {
+    //           "type": "person",
+    //           "id": 'A',
+    //           "lat": 51.513290000000005,
+    //           "lon": -0.09838000000000001,
+    //           "data": {
+    //           }
+    //         },
+    //         {
+    //           "type": "person",
+    //           "id": 'B',
+    //           "lat": 51.513290000000005,
+    //           "lon": -0.09838000000000001,
+    //           "data": {
+    //           }
+    //         }
+    //       ]
 
-    }, 8000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.513290000000005,
-              "lon": -0.0985,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
-              "lat": 51.51449,
-              "lon": -0.08118,
-              "data": {
-              }
-            }
-          ]
+    //     });
 
-        });
+    // }, 90000)
+    // setTimeout(function () {
+    //   self.drawpoints(
+    //     {
+    //       "Points": [
+    //         {
+    //           "type": "person",
+    //           "id": 'A',
+    //           "lat": 51.51328,
+    //           "lon": -0.09826000000000001,
+    //           "data": {
+    //           }
+    //         },
+    //         {
+    //           "type": "person",
+    //           "id": 'B',
+    //           "lat": 51.51451,
+    //           "lon": -0.08129,
+    //           "data": {
+    //           }
+    //         }
+    //       ]
 
-    }, 9000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.513290000000005,
-              "lon": -0.09838000000000001,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
-              "lat": 51.514500000000005,
-              "lon": -0.08125,
-              "data": {
-              }
-            }
-          ]
+    //     });
 
-        });
+    // }, 10000)
+    // setTimeout(function () {
+    //   self.drawpoints(
+    //     {
+    //       "Points": [
+    //         {
+    //           "type": "person",
+    //           "id": 'A',
+    //           "lat": 51.51328,
+    //           "lon": -0.09826000000000001,
+    //           "data": {
+    //           }
+    //         },
+    //         {
+    //           "type": "person",
+    //           "id": 'B',
+    //           "lat": 51.514520000000005,
+    //           "lon": -0.08132,
+    //           "data": {
+    //           }
+    //         }
 
-    }, 10000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.51328,
-              "lon": -0.09826000000000001,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
-              "lat": 51.51451,
-              "lon": -0.08129,
-              "data": {
-              }
-            }
-          ]
+    //       ]
 
-        });
+    //     });
 
-    }, 11000)
-    setTimeout(function () {
-      self.drawpoints(
-        {
-          "Points": [
-            {
-              "type": "person",
-              "id": 'A',
-              "lat": 51.51328,
-              "lon": -0.09826000000000001,
-              "data": {
-              }
-            },
-            {
-              "type": "person",
-              "id": 'B',
-              "lat": 51.514520000000005,
-              "lon": -0.08132,
-              "data": {
-              }
-            }
-
-          ]
-
-        });
-
-    }, 12000)
+    // }, 11000)
 
 
 
@@ -344,7 +318,11 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
     let self = this;
     let i = 0;
-
+var Colors = [
+    "#FF0000", 
+    "#00FF00"
+    
+];
     data.Points.forEach(function (res) {
 
       if (markerStore.hasOwnProperty(res.id)) {
@@ -366,11 +344,12 @@ export class AppComponent implements OnChanges, AfterViewInit {
         var flightPath = new google.maps.Polyline({
           path: markerStore[res.id].previousLatLngs,
           geodesic: true,
-          strokeColor: '#FF0000',
+           strokeColor: Colors[i],
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
         flightPath.setMap(self.map);
+        i++;
 
         // var marker = new google.maps.Marker({
         //           animation: google.maps.Animation.DROP,

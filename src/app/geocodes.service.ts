@@ -14,16 +14,16 @@ export class GeocodesService {
                   "type": "person",
                  
                      "id":'A',
-                      "lat":51.513237,
-                      "lon":-0.099102,
+                      "lat":24.880667,
+                      "lon":67.040669,
                   
             },
             {
                   "type": "person",
                  
                    "id":'B',
-                      "lat": 51.514786 ,
-                      "lon":-0.080799,
+                      "lat":24.880310,
+                      "lon":67.041583,
                  
             },
             // {

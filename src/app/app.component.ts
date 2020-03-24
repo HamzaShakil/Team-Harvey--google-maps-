@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnChanges, AfterViewInit } from '@angular/core';
 import { GeocodesService } from './geocodes.service';
-import * as SlidingMarker from 'marker-animate-unobtrusive';
+//import * as SlidingMarker from 'marker-animate-unobtrusive';
 
 var markerStore = {};
 declare var google: any;
@@ -307,7 +307,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   drawpoints(data) {
 
-
+ var SlidingMarker = require('marker-animate-unobtrusive');
     let self = this;
     let i = 0;
     var Colors = [
@@ -323,14 +323,16 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
       if (markerStore.hasOwnProperty(res.id)) {
        
-        self.lat = res.lat;
-        self.lng = res.lon;
-
+        // self.lat = res.lat;
+        // self.lng = res.lon;
+       var myLatlng =new google.maps.LatLng(res.lat, res.lon);
         //pushing previous cordinate of marker
-        markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
+        markerStore[res.id].previousLatLngs.push(myLatlng);
        // console.log(markerStore[res.id].previousLatLngs[0]+"yes")
         // new google.maps.Marker({position: start, map: this.map, label: 'A'});
-        markerStore[res.id].setPosition(new google.maps.LatLng(res.lat, res.lon));
+        
+        markerStore[res.id].setPosition(myLatlng);
+       // markerStore[res.id].setPosition(new google.maps.LatLng(res.lat, res.lon));
         
        
 
@@ -356,28 +358,25 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
       }
       else {
-    let latlong1 = new google.maps.LatLng(res.lat, res.lon);
-      marker = new SlidingMarker({
-      map: self.map,
-      position: latlong1,
+        var latlng = new google.maps.LatLng(res.lat, res.lon);
+        var marker = new SlidingMarker({
+          // animation: google.maps.Animation.DROP,
 
-    });
+          // position:latlng ,
+          // title: res.lat.toString(),
+          // map: self.map,
+          position: myLatlng,
+          map: self.map,
+          title: "I'm sliding marker",
+          duration: 2000,
+          easing: "linear"
 
-    marker.setDuration(1000);
-   marker.setEasing('linear');
-        // var marker = new SlidingMarker({
-        //   animation: google.maps.Animation.DROP,
-
-        //   position: new google.maps.LatLng(res.lat, res.lon),
-        //   title: res.lat.toString(),
-        //   map: self.map,
-        //   cameraOnMarker: true,
-
-        // });
+        });
+      
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
-        //console.log(markerStore[res.id].previousLatLngs[0])
+      
 
 
       }

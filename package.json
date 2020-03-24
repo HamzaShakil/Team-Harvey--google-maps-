@@ -11,6 +11,7 @@
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
     "@angular/router": "8.0.0",
+    "@types/node": "^13.9.3",
     "core-js": "2.6.9",
     "marker-animate-unobtrusive": "^0.2.8",
     "rxjs": "6.5.2",

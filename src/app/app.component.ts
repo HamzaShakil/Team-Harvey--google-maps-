@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnChanges, AfterViewInit } from '@angular/core';
 import { GeocodesService } from './geocodes.service';
 import { delay } from 'rxjs/operator/delay';
+//import {SlidingMarker} from '../SlidingMarker.min.js';
 //import {SlidingMarker} from 'marker-animate-unobtrusive';
 
 var markerStore = {};
@@ -308,7 +309,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   drawpoints(data) {
 
-    //var SlidingMarker = require('marker-animate-unobtrusive');
+    var SlidingMarker = require('marker-animate-unobtrusive');
     let self = this;
     let i = 0;
     var Colors = [

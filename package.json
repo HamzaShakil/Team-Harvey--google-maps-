@@ -11,12 +11,14 @@
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
     "@angular/router": "8.0.0",
-    "@types/node": "^13.9.3",
+    "@types/node": "13.9.4",
     "core-js": "2.6.9",
-    "marker-animate-unobtrusive": "^0.2.8",
+    "jquery": "^3.4.1",
+    "marker-animate": "^0.0.1",
+    "marker-animate-unobtrusive": "0.2.8",
     "rxjs": "6.5.2",
-    "rxjs-compat": "^6.5.4",
-    "travel-marker": "^0.13.0",
+    "rxjs-compat": "6.5.4",
+    "travel-marker": "0.13.0",
     "zone.js": "0.9.1"
   },
   "scripts": {

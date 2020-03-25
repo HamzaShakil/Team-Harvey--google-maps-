@@ -368,7 +368,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
           map: self.map,
           // title: "I'm sliding marker",
           duration: 2000,
-          easing: "easeOutExpo"
+          easing: "linear"
 
         });
         // var marker = new google.maps.Marker({

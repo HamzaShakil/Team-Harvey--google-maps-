@@ -11,7 +11,7 @@ import { GeocodesService } from './geocodes.service';
   BrowserModule, 
   FormsModule,
    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
+      apiKey: 'AIzaSyDBZ-wCXQuyt3pfIYVpDyVoDQAqp-X7OSI'
     })
    ],
   declarations: [ AppComponent, HelloComponent ],

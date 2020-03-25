@@ -308,7 +308,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   drawpoints(data) {
 
-    var SlidingMarker = require('marker-animate-unobtrusive');
+    //var SlidingMarker = require('marker-animate-unobtrusive');
     let self = this;
     let i = 0;
     var Colors = [
@@ -326,14 +326,15 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
         // self.lat = res.lat;
         // self.lng = res.lon;
-       
+
         var myLatlng = new google.maps.LatLng(res.lat, res.lon);
-         self.map.panTo(myLatlng);
+
         //pushing previous cordinate of marker
         markerStore[res.id].previousLatLngs.push(myLatlng);
 
         markerStore[res.id].setPosition(myLatlng);
-        // markerStore[res.id].setPosition(new google.maps.LatLng(res.lat, res.lon));
+
+        setTimeout(function () { self.map.panTo(myLatlng); }, 2000);
 
 
 
@@ -354,9 +355,10 @@ export class AppComponent implements OnChanges, AfterViewInit {
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
-        setTimeout(function(){ flightPath.setMap(self.map); }, 1000);
+        setInterval(function () { flightPath.setMap(self.map); }, 1000);
+        //setTimeout(function(){  }, 1000);
         //setTimeout()
-        
+
         i++;
 
       }
@@ -367,8 +369,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
           position: new google.maps.LatLng(res.lat, res.lon),
           map: self.map,
           // title: "I'm sliding marker",
-          duration: 2000,
-          easing: "linear"
+          duration: 1000,
+          easing: "easeOutQuad"
 
         });
         // var marker = new google.maps.Marker({
@@ -382,7 +384,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
         //   easing: "easeOutExpo"
 
         // });
-       
+
         marker.setPosition(latlng);
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];

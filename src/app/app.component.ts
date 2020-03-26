@@ -5,9 +5,11 @@ import { delay } from 'rxjs/operator/delay';
 //import {SlidingMarker} from 'marker-animate-unobtrusive';
 
 var markerStore = {};
-declare var google: any;
+
+
 
 var marker;
+declare var google: any;
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -21,10 +23,10 @@ export class AppComponent implements OnChanges, AfterViewInit {
   zoom: number = 17;
   markers: any[];
   map: any;
-
+  heatmapData: any = [];
   // initial center position for the map
-  lat: number = 24.880368
-  lng: number = 67.045409;
+  lat: number = 37.782;
+  lng: number = -122.447;
   onMapReady(map: any) {
     console.log(map);
     this.map = map;
@@ -42,9 +44,25 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
 
     var self = this;
+    
     //self.myCoordinates.push({lat:"abc",lon:"no"});
 
-
+  //   this.heatmapData.push([
+  // new google.maps.LatLng(37.782, -122.447),
+  // new google.maps.LatLng(37.782, -122.445),
+  // new google.maps.LatLng(37.782, -122.443),
+  // new google.maps.LatLng(37.782, -122.441),
+  // new google.maps.LatLng(37.782, -122.439),
+  // new google.maps.LatLng(37.782, -122.437),
+  // new google.maps.LatLng(37.782, -122.435),
+  // new google.maps.LatLng(37.785, -122.447),
+  // new google.maps.LatLng(37.785, -122.445),
+  // new google.maps.LatLng(37.785, -122.443),
+  // new google.maps.LatLng(37.785, -122.441),
+  // new google.maps.LatLng(37.785, -122.439),
+  // new google.maps.LatLng(37.785, -122.437),
+  // new google.maps.LatLng(37.785, -122.435)
+  //   ]);
     this.geo.getPositions().subscribe(geo => {
       this.geoPoints = geo.points;
       console.log(geo);
@@ -308,7 +326,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   drawpoints(data) {
 
-    //var SlidingMarker = require('marker-animate-unobtrusive');
+    var SlidingMarker = require('marker-animate-unobtrusive');
     let self = this;
     let i = 0;
     var Colors = [
@@ -328,6 +346,9 @@ export class AppComponent implements OnChanges, AfterViewInit {
         // self.lng = res.lon;
 
         var myLatlng = new google.maps.LatLng(res.lat, res.lon);
+        this.heatmapData.push(myLatlng);
+        console.log(this.heatmapData);
+
 
         //pushing previous cordinate of marker
         markerStore[res.id].previousLatLngs.push(myLatlng);
@@ -335,7 +356,11 @@ export class AppComponent implements OnChanges, AfterViewInit {
         markerStore[res.id].setPosition(myLatlng);
 
         setTimeout(function () { self.map.panTo(myLatlng); }, 2000);
-
+var heatmap = new google.maps.visualization.HeatmapLayer({
+  data: self.heatmapData
+});
+heatmap.setMap(self.map);
+   
 
 
 

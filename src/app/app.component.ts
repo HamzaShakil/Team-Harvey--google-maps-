@@ -15,7 +15,7 @@ var heatmap;
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
+export class AppComponent implements OnChanges, AfterViewInit {
 
   zoom: number = 17;
   map: any;
@@ -33,9 +33,12 @@ export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
 
   }
 
+ngOnChanges(ch)
+{
+   
 
-
-  ngOnInit(){//ngAfterViewInit() {
+}
+ngAfterViewInit() {
 
   
     var self = this;
@@ -55,17 +58,18 @@ export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
       
       })
 
-      this.drawpoints(geo);
-     
-
-    });
-   heatmap = new google.maps.visualization.HeatmapLayer({
-    data: self.getpoints,
+    this.drawpoints(geo);
+    heatmap = new google.maps.visualization.HeatmapLayer({
+    data: this.getpoints,
     //map:self.map
    
   });
 
-  heatmap.setMap(self.map);
+  heatmap.setMap(this.map);
+     
+
+    });
+ 
 
 
 
@@ -293,11 +297,6 @@ export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
 
     data.Points.forEach(function (res) {
      self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
-   
-
-
-
-
 
       if (markerStore.hasOwnProperty(res.id)) {
 
@@ -312,6 +311,7 @@ export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
         markerStore[res.id].setPosition(myLatlng);
         
        setTimeout(function(){self.map.panTo(myLatlng);},2000);
+       
        
 
 
@@ -334,8 +334,8 @@ export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
         });
         setInterval(function(){  flightPath.setMap(self.map);},1000);
         i++;
-       var marker=markerStore['B'].previousLatLngs;
-       console.log(marker)
+        heatmap.setMap(self.map);
+       
 
       }
       else {
@@ -355,14 +355,18 @@ export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
+          // 
 
 
 
       }
-
-    });
     
-   heatmap.setMap(self.map);
+
+   
+    
+    });
+   
+  
   
   }
  changeRadius(event: Event) {

@@ -346,7 +346,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
         // self.lng = res.lon;
 
         var myLatlng = new google.maps.LatLng(res.lat, res.lon);
-        this.heatmapData.push(myLatlng);
+        self.heatmapData.push(myLatlng);
         console.log(this.heatmapData);
 
 

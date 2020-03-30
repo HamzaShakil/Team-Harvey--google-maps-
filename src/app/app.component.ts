@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OnChanges, AfterViewInit } from '@angular/core';
+import { OnChanges, AfterViewInit,OnInit } from '@angular/core';
 import { GeocodesService } from './geocodes.service';
 import { MouseEvent, AgmMap } from '@agm/core';
 import { delay } from 'rxjs/operator/delay';
@@ -8,14 +8,14 @@ declare var google: any;
 var markerStore = {};
 var marker;
 var heatmap;
-var myLatlng;
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnChanges, AfterViewInit {
+export class AppComponent implements OnInit{//OnChanges, AfterViewInit {
 
   zoom: number = 17;
   map: any;
@@ -33,11 +33,9 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   }
 
-  ngOnChanges(ch) {
 
-  }
 
-  ngAfterViewInit() {
+  ngOnInit(){//ngAfterViewInit() {
 
   
     var self = this;
@@ -63,9 +61,11 @@ export class AppComponent implements OnChanges, AfterViewInit {
     });
    heatmap = new google.maps.visualization.HeatmapLayer({
     data: self.getpoints,
+    //map:self.map
    
   });
-  //heatmap.setMap(self.map);
+
+  heatmap.setMap(self.map);
 
 
 
@@ -280,6 +280,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
   }
 
   drawpoints(data) {
+    
 
     var SlidingMarker = require('marker-animate-unobtrusive');
     let self = this;
@@ -292,7 +293,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
     data.Points.forEach(function (res) {
      self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
-    
+   
 
 
 
@@ -360,6 +361,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
       }
 
     });
+    
    heatmap.setMap(self.map);
   
   }

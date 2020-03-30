@@ -52,7 +52,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
         });
 
-      self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
+      
       
       })
 
@@ -61,9 +61,10 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
     });
    heatmap = new google.maps.visualization.HeatmapLayer({
-    data: this.getpoints,
-    map: self.map
+    data: self.getpoints,
+   
   });
+  heatmap.setMap(self.map);
 
 
 
@@ -289,6 +290,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
     ];
 
     data.Points.forEach(function (res) {
+    self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
 
 
 

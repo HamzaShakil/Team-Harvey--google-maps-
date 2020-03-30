@@ -65,7 +65,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
     data: self.getpoints,
    
   });
-  heatmap.setMap(self.map);
+ // heatmap.setMap(self.map);
 
 
 

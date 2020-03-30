@@ -8,6 +8,7 @@ declare var google: any;
 var markerStore = {};
 var marker;
 var heatmap;
+var myLatlng;
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -290,8 +291,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
     ];
 
     data.Points.forEach(function (res) {
+     self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
     
-  
 
 
 
@@ -300,8 +301,9 @@ export class AppComponent implements OnChanges, AfterViewInit {
       if (markerStore.hasOwnProperty(res.id)) {
 
        
-       
-        var myLatlng = new google.maps.LatLng(res.lat, res.lon);
+      var myLatlng = new google.maps.LatLng(res.lat, res.lon);
+  
+        
        
         //pushing previous cordinate of marker
         markerStore[res.id].previousLatLngs.push(myLatlng);
@@ -331,8 +333,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
         });
         setInterval(function(){  flightPath.setMap(self.map);},1000);
         i++;
-        self.getpoints.push(myLatlng);
-        heatmap.setMap(self.map);
+       var marker=markerStore['B'].previousLatLngs;
+       console.log(marker)
 
       }
       else {
@@ -358,6 +360,18 @@ export class AppComponent implements OnChanges, AfterViewInit {
       }
 
     });
-
+   heatmap.setMap(self.map);
+  
   }
+ changeRadius(event: Event) {
+   heatmap.set('radius', heatmap.get('radius') ? null : 20);
 }
+toggleHeatmap(event: Event) {
+  heatmap.setMap(heatmap.getMap() ? null : this.map);
+}
+hideSensorCordinate(event: Event) {
+  heatmap.setMap(heatmap.getMap() ? null : this.map);
+}
+  
+}
+

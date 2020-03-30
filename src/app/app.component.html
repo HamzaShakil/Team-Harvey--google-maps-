@@ -9,4 +9,11 @@
   [longitude]="lng"
   [zoom]="zoom" (mapReady)="onMapReady($event)">
 </agm-map>
+<div id="floating-panel">
+
+ 
+ <button (click)="changeRadius($event)"type="button">Change Radius</button>
+ <button (click)="toggleHeatmap($event)"type="button">toggle Heatmap</button>
+ <button (click)="hideSensorCordinate($event)"type="button">Hide Sensor Cordinate</button>
+</div>
 <!--  -->

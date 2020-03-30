@@ -57,11 +57,11 @@ export class AppComponent implements OnChanges, AfterViewInit {
       })
 
       this.drawpoints(geo);
-      console.log(this.getpoints);
+     
 
     });
    heatmap = new google.maps.visualization.HeatmapLayer({
-    data: this.getpoints(),
+    data: this.getpoints,
     map: self.map
   });
 

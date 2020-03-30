@@ -38,7 +38,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   ngAfterViewInit() {
 
-
+  
     var self = this;
     this.geo.getPositions().subscribe(geo => {
       geo.Points.forEach(function (res) {
@@ -290,7 +290,9 @@ export class AppComponent implements OnChanges, AfterViewInit {
     ];
 
     data.Points.forEach(function (res) {
-    self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
+    
+  
+
 
 
 
@@ -329,6 +331,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
         });
         setInterval(function(){  flightPath.setMap(self.map);},1000);
         i++;
+        self.getpoints.push(myLatlng);
+        heatmap.setMap(self.map);
 
       }
       else {

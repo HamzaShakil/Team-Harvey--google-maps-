@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OnChanges, AfterViewInit } from '@angular/core';
+import { OnChanges, AfterViewInit,OnInit } from '@angular/core';
 import { GeocodesService } from './geocodes.service';
 import { MouseEvent, AgmMap } from '@agm/core';
 import { delay } from 'rxjs/operator/delay';
@@ -8,7 +8,7 @@ declare var google: any;
 var markerStore = {};
 var marker;
 var heatmap;
-var myLatlng;
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -33,11 +33,12 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   }
 
-  ngOnChanges(ch) {
+ngOnChanges(ch)
+{
+   
 
-  }
-
-  ngAfterViewInit() {
+}
+ngAfterViewInit() {
 
   
     var self = this;
@@ -57,15 +58,18 @@ export class AppComponent implements OnChanges, AfterViewInit {
       
       })
 
-      this.drawpoints(geo);
+    this.drawpoints(geo);
+    heatmap = new google.maps.visualization.HeatmapLayer({
+    data: this.getpoints,
+    //map:self.map
+   
+  });
+
+  heatmap.setMap(this.map);
      
 
     });
-   heatmap = new google.maps.visualization.HeatmapLayer({
-    data: self.getpoints,
-   
-  });
- // heatmap.setMap(self.map);
+ 
 
 
 
@@ -280,6 +284,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
   }
 
   drawpoints(data) {
+    
 
     var SlidingMarker = require('marker-animate-unobtrusive');
     let self = this;
@@ -292,11 +297,6 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
     data.Points.forEach(function (res) {
      self.getpoints.push(new google.maps.LatLng(res.lat, res.lon));
-    
-
-
-
-
 
       if (markerStore.hasOwnProperty(res.id)) {
 
@@ -311,6 +311,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
         markerStore[res.id].setPosition(myLatlng);
         
        setTimeout(function(){self.map.panTo(myLatlng);},2000);
+       
        
 
 
@@ -333,8 +334,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
         });
         setInterval(function(){  flightPath.setMap(self.map);},1000);
         i++;
-       var marker=markerStore['B'].previousLatLngs;
-       console.log(marker)
+        heatmap.setMap(self.map);
+       
 
       }
       else {
@@ -354,13 +355,18 @@ export class AppComponent implements OnChanges, AfterViewInit {
         markerStore[res.id] = marker;
         markerStore[res.id].previousLatLngs = [];
         markerStore[res.id].previousLatLngs.push(new google.maps.LatLng(res.lat, res.lon));
+          // 
 
 
 
       }
+    
 
+   
+    
     });
-   heatmap.setMap(self.map);
+   
+  
   
   }
  changeRadius(event: Event) {
